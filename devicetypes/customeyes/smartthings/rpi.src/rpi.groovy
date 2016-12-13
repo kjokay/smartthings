@@ -2,7 +2,7 @@ import groovy.json.JsonSlurper
 
 metadata {
 	definition (name: "rpi", namespace: "customeyes/smartthings", author: "Kevin Johns") {
-		//capability "Polling"
+		capability "Polling"
 		capability "Configuration"
 		capability "Refresh"
 		capability "Temperature Measurement"
@@ -295,9 +295,8 @@ def setIpAddress(){
 private getStatus() {
 	if (device.currentValue("currentIP") != "Offline")
     	runIn(30, setOffline)
-    
-    def uri = "/"
-    postAction(uri)
+        
+    postAction("/")
 }
 
 // ------------------------------------------------------------------
